@@ -1,0 +1,65 @@
+﻿@model Product
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>@Model.Title</h2>
+            <p>@Model.ShortDescription</p>
+            <p>@Model.Price</p>
+            <p>@Model.Category</p>
+            <p>@Model.LongDescription</p>
+        </div>
+        <div class="col-md-4">
+            <div id="product-images-carousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="@Model.ImageURL1" class="d-block w-100 carousel-image" alt="Product Image 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="@Model.ImageURL2" class="d-block w-100 carousel-image" alt="Product Image 2">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#product-images-carousel" role="button" data-bs-slide="prev">
+                    <span class="carousel-custom-icon prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#product-images-carousel" role="button" data-bs-slide="next">
+                    <span class="carousel-custom-icon next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .carousel-inner {
+        position: relative;
+    }
+
+        .carousel-inner::before,
+        .carousel-inner::after {
+            display: none;
+        }
+
+    .carousel-custom-icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .prev-icon {
+        left: -30px;
+        background-image: url('/path/to/previous-icon.png');
+    }
+
+    .next-icon {
+        right: -30px;
+        background-image: url('/path/to/next-icon.png');
+    }
+</style>

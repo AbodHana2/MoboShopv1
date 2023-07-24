@@ -1,0 +1,78 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Create New Product";
+}
+<link rel="stylesheet" href="~/css/site.css" />
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+
+        @TempData["ErrorMessage"]
+
+    </div>
+}
+
+<div class="row" style="margin-top: 20px;">
+    <div class="doc-container">
+        <form asp-action="Create" asp-controller="Manger" method="post" enctype="multipart/form-data">
+            <div>
+                <label asp-for="Title" class="control-label"></label>
+                <div class="input-field">
+                    <input asp-for="Title" class="form-control" />
+                </div>
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Category"></label>
+                <select class="form-control custom-select" asp-for="Category" asp-items="Html.GetEnumSelectList<ProductType>()">
+                    <option selected="selected">-None-</option>
+                </select>
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="ShortDescription" class="control-label"></label>
+                <div class="input-field">
+                    <input asp-for="ShortDescription" class="form-control" />
+                </div>
+                <span asp-validation-for="ShortDescription" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="LongDescription" class="control-label"></label>
+                <div class="input-field">
+                    <input asp-for="LongDescription" class="form-control" />
+                </div>
+                <span asp-validation-for="LongDescription" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Price" class="control-label"></label>
+                <div class="input-field">
+                    <input asp-for="Price" class="form-control" />
+                </div>
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="ImageURL1" class="control-label"></label>
+                <div class="input-field">
+                    <input asp-for="ImageFile1" class="form-control" />
+                </div>
+                <span asp-validation-for="ImageURL1" class="text-danger"></span>
+            </div>
+            <div>
+
+                <label asp-for="ImageURL2" class="control-label"></label>
+                <div class="input-field">
+                    <input asp-for="ImageFile2" class="form-control" />
+                </div>
+                <span asp-validation-for="ImageURL2" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-12 button-group">
+                <div class="d-inline-block">
+                    <a asp-action="List" asp-controller="Manger" class="btn-back">Back To List</a>
+                </div>
+                <div class="d-inline-block">
+                    <input type="submit" value="Create" class="btn btn-primary btn-shadow btn-create" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

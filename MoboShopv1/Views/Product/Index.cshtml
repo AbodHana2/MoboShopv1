@@ -1,0 +1,84 @@
+﻿@model ProductViewModel
+@{
+    ViewData["Title"] = "Products";
+}
+<style>
+    .section-title {
+        color: black;
+        font-weight: bold;
+        /* Add additional styling as needed */
+    }
+</style>
+@if (Model.Mobile != null)
+{
+    <div class="container mt-4">
+        <h2 class="section-title text-center">Mobiles</h2>
+        <div class="row">
+            @foreach (var mobile in Model.Mobile)
+            {
+                <div class="col-md-3">
+                    <div class="card mx-2 mb-4" style="width: 16rem;">
+                        <img src="@mobile.ImageURL1" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@mobile.Title</h5>
+                            <p class="card-text">@mobile.ShortDescription</p>
+                            <p class="card-text">@mobile.Price$</p>
+                            <a asp-action="Details" asp-route-id="@mobile.ID" class="btn btn-primary">Details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <hr />
+}
+
+
+@if (Model.Hardware != null)
+{
+    <div class="container mt-4">
+        <h2 class="section-title text-center">Hardware</h2>
+        <div class="row">
+            @foreach (var hard in Model.Hardware)
+            {
+                <div class="col-md-3">
+                    <div class="card mx-2 mb-4" style="width: 16rem;">
+                        <img src="@hard.ImageURL1" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@hard.Title</h5>
+                            <p class="card-text">@hard.ShortDescription</p>
+                            <p class="card-text">@hard.Price$</p>
+                            <a asp-action="Details" asp-route-id="@hard.ID" class="btn btn-primary">Details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <hr />
+}
+
+@if (Model.Accessoris != null)
+{
+    <div class="container mt-4">
+        <h2 class="section-title text-center">Accessoris</h2>
+        <div class="row">
+            @foreach (var ac in Model.Accessoris)
+            {
+                <div class="col-md-3">
+                    <div class="card mx-2 mb-4" style="width: 16rem;">
+                        <img src="@ac.ImageURL1" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@ac.Title</h5>
+                            <p class="card-text">@ac.ShortDescription</p>
+                            <p class="card-text">@ac.Price$</p>
+                            <a asp-action="Details" asp-route-id="@ac.ID" class="btn btn-primary">Details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+

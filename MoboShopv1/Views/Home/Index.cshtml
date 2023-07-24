@@ -1,0 +1,161 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Home";
+}
+<style>
+    .banner-image {
+        width: 100%;
+        height: 50vh;
+    }
+
+    .banner-heading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+    }
+
+    .custom-img {
+        width: 100%;
+        height: 200px; /* Adjust the height as desired */
+        object-fit: cover; /* Maintain aspect ratio and fill container */
+        transition: transform 0.3s; /* Add smooth transition effect */
+    }
+
+        .custom-img:hover {
+            transform: scale(1.05); /* Increase scale on hover */
+        }
+
+    .photo-description {
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .photo-item:hover .photo-description {
+        opacity: 1;
+    }
+
+    .carousel-image {
+        max-height: 300px; /* Adjust the maximum height as desired */
+        object-fit: contain; /* Maintain aspect ratio and fit within the container */
+        margin: 0 auto; /* Center the images horizontally */
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px; /* Adjust the height as needed */
+    }
+
+    .section-title {
+        color: #000;
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        cursor: pointer;
+        color: black;
+    }
+</style>
+<header class="is-sticky is-shrink is-boxed header-s1" id="header" style="margin-top:1px;">
+    <div class="header-box">
+        <div class="banner banner-inner tc-light">
+            <div class="banner-block">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="banner-content">
+                                <div class="image-container">
+                                    <img src="/Images/mobobanner.jfif" alt="banner" class="banner-image">
+                                    <h1 class="banner-heading">Welcome to our Shop</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- .banner -->
+    </div>
+</header>
+<hr />
+<section class="container">
+    <div class="section-header">
+        <h2 class="section-title">Our Services</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="photo-item">
+                <img src="/Images/img1.jpg" alt="" class="img-fluid custom-img">
+                <div class="photo-description">
+                    <h4>Mobiles Collection</h4>
+                    <p>We have the Best Collection of Mobiles with best Prices</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="photo-item">
+                <img src="/Images/img4.jpg" alt="" class="img-fluid custom-img">
+                <div class="photo-description">
+                    <h4>
+                        Mobiles Accessories
+                    </h4>
+                    <p>Best Accessories Collection</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="photo-item">
+                <img src="/Images/img3.jpg" alt="" class="img-fluid custom-img">
+                <div class="photo-description">
+                    <h4>Software</h4>
+                    <p>We have the Best Software Team</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<hr />
+<section id="product-carousel" class="container">
+    <div class="section-header">
+        <h2 class="section-title">Our New Products</h2>
+    </div>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@i" @(i == 0 ? "class=active" : "")></li>
+            }
+        </ol>
+        <div class="carousel-inner">
+            @foreach (var product in Model)
+            {
+                <div class="carousel-item @(product == Model[0] ? "active" : "")">
+                    <img src="@product.ImageURL1" class="d-block w-100 carousel-image">
+                    <div class="carousel-caption">
+                       @* <h5>@product.Title</h5>
+                        <p>@product.ShortDescription</p>*@
+                    </div>
+                </div>
+            }
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </a>
+    </div>
+</section>
+
+
+
+
+
